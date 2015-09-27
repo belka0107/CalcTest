@@ -7,6 +7,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,25 +17,25 @@ import static org.junit.Assert.assertEquals;
 @Title("Тестирование деления")
 @RunWith(Parameterized.class)
 public class Division extends Operations{
-    public Division(int operand1, int operand2, double result) {
+    public Division(long operand1, long operand2, double result) {
         super(operand1, operand2, result);
     }
 
     @Parameterized.Parameters
     public static Collection initialize() throws IOException{
-        return TestSuite.getData().divArgs;
+        return Data.getArgs('/');
     }
 
     @Test
     @Step("Проверка результата")
     @Title("Тестирование равенства ожидаемого и вычисленного результата деления")
     public void divide() {
-        assertEquals(result, divide(operand1,operand2), 0);
+        assertEquals(result, divide(operand1,operand2), 0.001);
     }
 
     @Step("Деление {0} на {1}")
-    private double divide(int arg1, int arg2)
+    private double divide(long arg1, long arg2)
     {
-        return (double)arg1/(double)arg2;
+        return (double)arg1/arg2;
     }
 }

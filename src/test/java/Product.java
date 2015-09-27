@@ -17,13 +17,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class Product extends Operations{
 
-    public Product(int operand1, int operand2, double result) {
+    public Product(long operand1, long operand2, double result) {
         super(operand1, operand2, result);
     }
 
     @Parameterized.Parameters
     public static Collection initialize() throws IOException{
-        return TestSuite.getData().prodArgs;
+        return Data.getArgs('*');
     }
 
     @Test
@@ -34,7 +34,7 @@ public class Product extends Operations{
     }
 
     @Step("Умножение {0} и {1}")
-    private double multiply(int arg1, int arg2)
+    private double multiply(long arg1, long arg2)
     {
         return arg1*arg2;
     }

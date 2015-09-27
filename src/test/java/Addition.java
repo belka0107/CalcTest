@@ -6,6 +6,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,13 +17,15 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class Addition extends Operations {
 
-    public Addition(int operand1, int operand2, double result) {
+    public Addition(long operand1, long operand2, double result) {
         super(operand1, operand2, result);
     }
 
     @Parameterized.Parameters
     public static Collection initialize() throws IOException{
-        return TestSuite.getData().sumArgs;
+        List<Object> args = Data.getArgs('+');
+        return args;
+
     }
 
     @Test
@@ -33,7 +36,7 @@ public class Addition extends Operations {
     }
 
     @Step("Суммирование {0} и {1}")
-    private double sum(int arg1, int arg2)
+    private double sum(long arg1, long arg2)
     {
         return arg1+arg2;
     }

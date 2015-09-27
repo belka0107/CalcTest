@@ -16,13 +16,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class Subtraction extends Operations{
 
-    public Subtraction(int operand1, int operand2, double result) {
+    public Subtraction(long operand1, long operand2, double result) {
         super(operand1, operand2, result);
     }
 
     @Parameterized.Parameters
     public static Collection initialize() throws IOException{
-        return TestSuite.getData().subArgs;
+        return Data.getArgs('-');
     }
 
     @Test
@@ -33,7 +33,7 @@ public class Subtraction extends Operations{
     }
 
     @Step("Вычитание {1} из {0}")
-    private double subtract(int arg1, int arg2)
+    private double subtract(long arg1, long arg2)
     {
         return arg1-arg2;
     }
