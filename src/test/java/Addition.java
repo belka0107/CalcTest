@@ -23,8 +23,7 @@ public class Addition extends Operations {
 
     @Parameterized.Parameters
     public static Collection initialize() throws IOException{
-        List<Object> args = Data.getArgs('+');
-        return args;
+        return TestSuite.getInstance().getArguments('+');
 
     }
 

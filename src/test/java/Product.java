@@ -23,7 +23,7 @@ public class Product extends Operations{
 
     @Parameterized.Parameters
     public static Collection initialize() throws IOException{
-        return Data.getArgs('*');
+        return TestSuite.getInstance().getArguments('*');
     }
 
     @Test
